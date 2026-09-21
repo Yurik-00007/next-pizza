@@ -2,6 +2,7 @@ import type {Metadata} from "next";
 import {Nunito} from "next/font/google";
 import "./globals.css";
 import React from "react";
+import Header from "@/components/shared/header";
 
 const nunito = Nunito({
   variable: "--font-nunito",
@@ -20,6 +21,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       className={`${nunito.variable} h-full antialiased`}
     >
       <body className={`${nunito.variable} flex min-h-full flex-col`}>
+        <Header />
         <main className={"min-h-screen"}>{children}</main>
       </body>
     </html>
