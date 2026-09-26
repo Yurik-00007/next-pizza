@@ -12,11 +12,11 @@ type Props = {
 const arr = [
   {
     text: "Сырный соус",
-    value: "1",
+    value: "2",
   },
   {
     text: "Моццарелла",
-    value: "2",
+    value: "3",
   },
   {
     text: "Чеснок",

@@ -45,7 +45,7 @@ export const ProductCard = ({id, name, price, imageUrl, className}: Props) => {
           <Button>
             <Plus
               size={20}
-              className={"mr-1"}
+              className={"mr-2"}
             />
             Добавить
           </Button>

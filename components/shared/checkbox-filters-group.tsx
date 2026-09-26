@@ -56,7 +56,7 @@ export const CheckboxFiltersGroup = ({
         </div>
       )}
       <div
-        className={"scrollbar flex max-h-96 flex-col gap-4 overflow-auto pr-2"}
+        className={"scrollbar flex max-h-96 flex-col gap-4 overflow-auto pr-3"}
       >
         {list.map((item: Item) => (
           <FilterCheckbox

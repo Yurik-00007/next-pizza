@@ -23,7 +23,7 @@ export const Categories = ({className}: Props) => {
 
   return (
     <div
-      className={cn("inline-flex gap-1 rounded-2xl bg-gray-50 p-1", className)}
+      className={cn("inline-flex gap-2 rounded-2xl bg-gray-50 p-2", className)}
     >
       {cats.map(({name, id}, i) => (
         <a
