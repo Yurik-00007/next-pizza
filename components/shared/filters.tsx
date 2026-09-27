@@ -20,22 +20,22 @@ const arr = [
   },
   {
     text: "Чеснок",
-    value: "3",
-  },
-  {
-    text: "Солёные огурчики",
     value: "4",
   },
   {
-    text: "Красный лук",
+    text: "Солёные огурчики",
     value: "5",
   },
   {
-    text: "Томаты",
+    text: "Красный лук",
     value: "6",
   },
-  {text: "Острый перец халапеньо", value: "7"},
-  {text: "Цыпленок", value: "8"},
+  {
+    text: "Томаты",
+    value: "7",
+  },
+  {text: "Острый перец халапеньо", value: "8"},
+  {text: "Цыпленок", value: "9"},
 ];
 
 export const Filters = ({className}: Props) => {
