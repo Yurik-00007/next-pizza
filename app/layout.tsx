@@ -1,17 +1,17 @@
-import type {Metadata} from "next";
-import {Nunito} from "next/font/google";
-import "./globals.css";
-import React from "react";
-import Header from "@/components/shared/header";
+import type {Metadata} from 'next';
+import {Nunito} from 'next/font/google';
+import './globals.css';
+import React from 'react';
+import Header from '@/components/shared/header';
 
 const nunito = Nunito({
-  variable: "--font-nunito",
-  subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: '--font-nunito',
+  subsets: ['latin', 'cyrillic'],
+  weight: ['400', '500', '600', '700', '800', '900'],
 });
 
 export const metadata: Metadata = {
-  title: "Next Pizza | Главная",
+  title: 'Next Pizza | Главная',
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
@@ -22,7 +22,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     >
       <body className={`${nunito.variable} flex min-h-full flex-col`}>
         <Header />
-        <main className={"min-h-screen"}>{children}</main>
+        <main className={'min-h-screen'}>{children}</main>
       </body>
     </html>
   );

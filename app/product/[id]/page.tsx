@@ -1,7 +1,12 @@
-import App from "next/app";
-
-export default function ProductPage(app: App) {
-  return(
-    <div><h1>Product Page</h1></div>
-  )
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{id: string}>;
+}) {
+  const {id} = await params;
+  return (
+    <div>
+      <h1>Product {id}</h1>
+    </div>
+  );
 }

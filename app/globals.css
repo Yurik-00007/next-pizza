@@ -1,6 +1,6 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -99,7 +99,7 @@ html {
 
 .scrollbar::-webkit-scrollbar-track {
   border-radius: 6px;
-  background: #fff;
+  background: #fcf3f3;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
@@ -121,7 +121,12 @@ html {
   }
 
   /* Добавьте наследование шрифта для всех интерактивных элементов */
-  html, body, button, input, select, textarea {
+  html,
+  body,
+  button,
+  input,
+  select,
+  textarea {
     font-family: var(--font-nunito), sans-serif;
   }
 

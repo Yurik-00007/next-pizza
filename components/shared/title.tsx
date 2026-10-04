@@ -1,7 +1,7 @@
-import {createElement} from "react";
-import {clsx} from "clsx";
+import {createElement} from 'react';
+import {clsx} from 'clsx';
 
-type TitleSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
+type TitleSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
 type Props = {
   size?: TitleSize;
@@ -9,23 +9,23 @@ type Props = {
   text: string;
 };
 
-export const Title = ({size = "sm", text, className}: Props) => {
+export const Title = ({size = 'sm', text, className}: Props) => {
   const mapTagBySize = {
-    xs: "h5",
-    sm: "h4",
-    md: "h3",
-    lg: "h2",
-    xl: "h1",
-    "2xl": "h1",
+    xs: 'h5',
+    sm: 'h4',
+    md: 'h3',
+    lg: 'h2',
+    xl: 'h1',
+    '2xl': 'h1',
   } as const;
 
   const mapClassNameBySize = {
-    xs: "text-[16px]",
-    sm: "text-[22px]",
-    md: "text-[26px]",
-    lg: "text-[32px]",
-    xl: "text-[40px]",
-    "2xl": "text-[48px]",
+    xs: 'text-[16px]',
+    sm: 'text-[22px]',
+    md: 'text-[26px]',
+    lg: 'text-[32px]',
+    xl: 'text-[40px]',
+    '2xl': 'text-[48px]',
   } as const;
 
   return createElement(

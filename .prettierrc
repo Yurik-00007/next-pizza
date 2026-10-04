@@ -2,7 +2,7 @@
   "singleAttributePerLine": true,
   "bracketSameLine": false,
   "semi": true,
-  "singleQuote": false,
+  "singleQuote": true,
   "tabWidth": 2,
   "trailingComma": "es5",
   "printWidth": 80,

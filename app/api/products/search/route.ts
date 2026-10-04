@@ -1,15 +1,15 @@
-import {NextRequest, NextResponse} from "next/server";
-import {prisma} from "@/prisma/prisma-client";
+import {NextRequest, NextResponse} from 'next/server';
+import {prisma} from '@/prisma/prisma-client';
 
 export async function GET(req: NextRequest) {
-  console.log(req.nextUrl.searchParams.get("query"));
-  const query = req.nextUrl.searchParams.get("query") || "";
+  console.log(req.nextUrl.searchParams.get('query'));
+  const query = req.nextUrl.searchParams.get('query') || '';
   const products = await prisma.product.findMany({
     where: {
       // name: query,
       name: {
         contains: query,
-        mode: "insensitive",
+        mode: 'insensitive',
       },
     },
     take: 5,
@@ -17,5 +17,5 @@ export async function GET(req: NextRequest) {
   //===
   //includes содержиться (сырная-> сыр), моде:нечувствительный
   // const ingredients = await prisma.ingredient.findMany();
-  return NextResponse.json({products});
+  return NextResponse.json(products);
 }

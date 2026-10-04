@@ -1,6 +1,4 @@
-import App from "next/app";
-
-export default function ProductPage(app: App) {
+export default function ProductPage() {
   return (
     <div>
       <h1>Product Page</h1>

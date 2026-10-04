@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import {Title} from "@/components/shared/title";
-import {cn} from "cn";
-import {ProductCard} from "@/components/shared/product-card";
-import {useIntersection} from "react-use";
-import {useEffect, useRef} from "react";
-import {useCategoryStore} from "@/store/category";
+import {Title} from '@/components/shared/title';
+import {cn} from 'cn';
+import {ProductCard} from '@/components/shared/product-card';
+import {useIntersection} from 'react-use';
+import {useEffect, useRef} from 'react';
+import {useCategoryStore} from '@/store/category';
 
 type Props = {
   title: string;
@@ -45,10 +45,10 @@ export const ProductsGroupList = ({
     >
       <Title
         text={title}
-        size={"lg"}
-        className={"mb-5 font-extrabold"}
+        size={'lg'}
+        className={'mb-5 font-extrabold'}
       />
-      <div className={cn("grid grid-cols-3 gap-[50px]", listClassName)}>
+      <div className={cn('grid grid-cols-3 gap-[50px]', listClassName)}>
         {productItems.map((product: any) => (
           <ProductCard
             key={product.id}
