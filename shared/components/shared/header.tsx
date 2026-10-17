@@ -2,9 +2,10 @@ import {cn} from 'cn';
 import Image from 'next/image';
 import {Button} from '@/shared/components/ui';
 import {Container} from '@/shared/components/shared/container';
-import {ArrowRight, ShoppingCart, User} from 'lucide-react';
+import {User} from 'lucide-react';
 import Link from 'next/link';
 import {SearchInput} from '@/shared/components/shared/search-input';
+import {CartButton} from '@/shared/components/shared/cart-button';
 
 type Props = {
   className?: string;
@@ -44,24 +45,7 @@ export const Header = ({className}: Props) => {
             <User size={16} />
             Войти
           </Button>
-          <div>
-            <Button className={'group relative'}>
-              <b>520</b>
-              <span className={'mx-3 h-full w-px bg-white/30'}></span>
-              <div className="flex items-center gap-1 transition duration-300 group-hover:opacity-0">
-                <ShoppingCart
-                  size={16}
-                  className={'relative'}
-                  strokeWidth={2}
-                />
-                <b>3</b>
-              </div>
-              <ArrowRight
-                size={20}
-                className="absolute right-5 -translate-x-2 opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-              />
-            </Button>
-          </div>
+          <CartButton />
         </div>
       </Container>
     </header>
