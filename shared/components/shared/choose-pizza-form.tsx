@@ -1,21 +1,14 @@
 'use client';
 import {cn} from 'cn';
 import {GroupVariants} from '@/shared/components/shared/group-variants';
-import {
-  mapPizzaType,
-  PizzaSize,
-  pizzaSizes,
-  PizzaType,
-  pizzaTypes,
-} from '@/shared/constants/pizza';
+import {PizzaSize, PizzaType, pizzaTypes} from '@/shared/constants/pizza';
 import {PizzaImage} from '@/shared/components/shared/pizza-image';
 import {Title} from '@/shared/components/shared/title';
 import {Button} from '@/shared/components/ui';
-import {useEffect, useState} from 'react';
 import {Ingredient, ProductItem} from '@prisma/client';
 import {IngredientItem} from '@/shared/components/shared/ingredient-item';
-import {useSet} from 'react-use';
-import {calcTotalPizzaPrice} from '@/shared/lib';
+import {getPizzaDetails} from '@/shared/lib';
+import {usePizzaOptions} from '@/shared/hooks/use-pizza-options';
 
 type Props = {
   imageUrl: string;
@@ -33,57 +26,23 @@ export const ChoosePizzaForm = ({
   ingredients,
   imageUrl,
 }: Props) => {
-  const [size, setSize] = useState<PizzaSize>(20);
-  const [type, setType] = useState<PizzaType>(1);
+  const {
+    size,
+    type,
+    setSize,
+    setType,
+    selectedIngredients,
+    addIngredient,
+    availablePizzaSizes,
+  } = usePizzaOptions(items);
 
-  const [selectedIngredients, {toggle: addIngredient}] = useSet(
-    new Set<number>([])
-  );
-  const textDetails = `${size} см, ${mapPizzaType[type]} пицца, ингридиенты: ${selectedIngredients.size}`;
-
-  const totalPrice = calcTotalPizzaPrice(
+  const {textDetails, totalPrice} = getPizzaDetails(
     type,
     size,
     items,
     ingredients,
     selectedIngredients
   );
-
-  //массив видов пицц -> items
-  //[
-  // {id: 1, price: 550, size: 20, pizzaType: 1, productId: 39,…},
-  // {id: 2, price: 495, size: 30, pizzaType: 2, productId: 39, …},
-  // {id: 3, price: 226, size: 40, pizzaType: 2, productId: 39, …}]
-  //фильтруем пиццу по типу(pizzaType: 1) и отображаем массив -> filteredPizzasByType
-  // [{id: 1, price: 550, size: 20, pizzaType: 1, productId: 39, …}]
-  const filteredPizzasByType = items.filter((item) => item.pizzaType === type);
-  // console.log(items, filteredPizzasByType);
-
-  //превращаем массив объектов pizzaSizes ([{name: 'Маленькая', value: '20'}{…}{…}]) в availablePizzaSizes ([{name: 'Маленькая', value: '20', disabled:false}{…}{…}])
-  const availablePizzaSizes = pizzaSizes.map((item) => ({
-    name: item.name,
-    value: item.value,
-    disabled: !filteredPizzasByType.some(
-      (pizza) => Number(pizza.size) === Number(item.value)
-    ),
-  }));
-  //Обычно disabled: true означает «выключено», а false — «доступно».
-
-  // console.log('availablePizzaSizes', availablePizzaSizes);
-
-  useEffect(() => {
-    //Ищет в списке размеров availablePizzaSizes тот, который совпадает с текущим size и при этом не отключён (disabled: false). Если нашёл, в isAvailableSize лежит объект, иначе undefined.
-    const isAvailableSize = availablePizzaSizes?.find(
-      (item) => Number(item.value) === size && !item.disabled
-    );
-    //Ищет первый доступный размер, любой. Он нужен как запасной вариант.
-    const availableSize = availablePizzaSizes?.find((item) => !item.disabled);
-
-    //Условие читается так: «текущий размер недоступен и запасной вариант существует». Тогда размер меняется на запасной. Если текущий размер доступен, эффект ничего не делает.
-    if (!isAvailableSize && availableSize) {
-      setSize(Number(availableSize.value) as PizzaSize);
-    }
-  }, [availablePizzaSizes, size, type]);
 
   const handleClickAdd = () => {
     onClickAddCart?.();
