@@ -108,7 +108,7 @@ html {
 }
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #dbdadd;
+  background: #d0cfcf;
 }
 
 @utility text-balance {
