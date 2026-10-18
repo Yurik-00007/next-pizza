@@ -1,7 +1,7 @@
 'use client';
 import {cn} from 'cn';
 import {GroupVariants} from '@/shared/components/shared/group-variants';
-import {PizzaSize, PizzaType, pizzaTypes} from '@/shared/constants/pizza';
+import {PizzaSizeType, PizzaType, pizzaTypes} from '@/shared/constants/pizza';
 import {PizzaImage} from '@/shared/components/shared/pizza-image';
 import {Title} from '@/shared/components/shared/title';
 import {Button} from '@/shared/components/ui';
@@ -69,7 +69,7 @@ export const ChoosePizzaForm = ({
         <div className="mt-5 flex flex-col gap-3">
           <GroupVariants
             items={availablePizzaSizes}
-            onClick={(value) => setSize(Number(value) as PizzaSize)}
+            onClick={(value) => setSize(Number(value) as PizzaSizeType)}
             value={String(size)}
           />
           <GroupVariants

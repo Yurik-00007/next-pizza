@@ -1,5 +1,5 @@
 import {Ingredient, ProductItem} from '@prisma/client';
-import {PizzaSize, PizzaType} from '@/shared/constants/pizza';
+import {PizzaSizeType, PizzaType} from '@/shared/constants/pizza';
 
 /**
  * Функция для подсчета общей стоимости пиццы.
@@ -27,7 +27,7 @@ import {PizzaSize, PizzaType} from '@/shared/constants/pizza';
 
 export const calcTotalPizzaPrice = (
   type: PizzaType,
-  size: PizzaSize,
+  size: PizzaSizeType,
   items: ProductItem[],
   ingredients: Ingredient[],
   selectedIngredients: Set<number>

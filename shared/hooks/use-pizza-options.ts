@@ -1,14 +1,14 @@
 import {useEffect, useState} from 'react';
-import {PizzaSize, PizzaType} from '@/shared/constants/pizza';
+import {PizzaSizeType, PizzaType} from '@/shared/constants/pizza';
 import {Variant} from '@/shared/components/shared/group-variants';
 import {useSet} from 'react-use';
 import {getAvailablePizzaSizes} from '@/shared/lib';
 import {ProductItem} from '@prisma/client';
 
 type ReturnProps = {
-  size: PizzaSize;
+  size: PizzaSizeType;
   type: PizzaType;
-  setSize: (size: PizzaSize) => void;
+  setSize: (size: PizzaSizeType) => void;
   setType: (type: PizzaType) => void;
   selectedIngredients: Set<number>;
   addIngredient: (id: number) => void;
@@ -16,7 +16,7 @@ type ReturnProps = {
 };
 
 export const usePizzaOptions = (items: ProductItem[]): ReturnProps => {
-  const [size, setSize] = useState<PizzaSize>(20);
+  const [size, setSize] = useState<PizzaSizeType>(20);
   const [type, setType] = useState<PizzaType>(1);
 
   const [selectedIngredients, {toggle: addIngredient}] = useSet(
@@ -35,7 +35,7 @@ export const usePizzaOptions = (items: ProductItem[]): ReturnProps => {
 
     //Условие читается так: «текущий размер недоступен и запасной вариант существует». Тогда размер меняется на запасной. Если текущий размер доступен, эффект ничего не делает.
     if (!isAvailableSize && availableSize) {
-      setSize(Number(availableSize.value) as PizzaSize);
+      setSize(Number(availableSize.value) as PizzaSizeType);
     }
   }, [availableSizes, setSize, size, type]);
 
