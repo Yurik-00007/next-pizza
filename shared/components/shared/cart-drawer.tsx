@@ -11,6 +11,8 @@ import {
 } from '@/shared/components/ui';
 import Link from 'next/link';
 import {ArrowRight} from 'lucide-react';
+import {CartDrawerItem} from '@/shared/components/shared/cart-drawer-item';
+import {getCartItemDetails} from '@/shared/lib';
 
 type Props = {
   className?: string;
@@ -31,6 +33,260 @@ export const CartDrawer = ({className, children}: Props) => {
           </SheetHeader>
 
           {/*  Items*/}
+          <div className={'mt-5 flex-1 overflow-auto'}>
+            <div className={'mb-2'}>
+              <CartDrawerItem
+                id={1}
+                imageUrl={'/images/pizzas/1.png'}
+                name={'Сырная'}
+                price={530}
+                details={getCartItemDetails(1, 30, [
+                  {name: 'сыр'},
+                  {name: 'лук'},
+                  {name: 'перец'},
+                ])}
+                quantity={1}
+              />
+            </div>
+            <div className={'mb-2'}>
+              <CartDrawerItem
+                id={1}
+                imageUrl={'/images/pizzas/1.png'}
+                name={'Сырная'}
+                price={530}
+                details={getCartItemDetails(1, 30, [
+                  {name: 'сыр'},
+                  {name: 'лук'},
+                  {name: 'перец'},
+                ])}
+                quantity={1}
+              />
+            </div>
+            <div className={'mb-2'}>
+              <CartDrawerItem
+                id={1}
+                imageUrl={'/images/pizzas/1.png'}
+                name={'Сырная'}
+                price={530}
+                details={getCartItemDetails(1, 30, [
+                  {name: 'сыр'},
+                  {name: 'лук'},
+                  {name: 'перец'},
+                ])}
+                quantity={1}
+              />
+            </div>
+            <div className={'mb-2'}>
+              <CartDrawerItem
+                id={1}
+                imageUrl={'/images/pizzas/1.png'}
+                name={'Сырная'}
+                price={530}
+                details={getCartItemDetails(1, 30, [
+                  {name: 'сыр'},
+                  {name: 'лук'},
+                  {name: 'перец'},
+                ])}
+                quantity={1}
+              />
+            </div>
+            <div className={'mb-2'}>
+              <CartDrawerItem
+                id={1}
+                imageUrl={'/images/pizzas/1.png'}
+                name={'Сырная'}
+                price={530}
+                details={getCartItemDetails(1, 30, [
+                  {name: 'сыр'},
+                  {name: 'лук'},
+                  {name: 'перец'},
+                ])}
+                quantity={1}
+              />
+            </div>
+            <div className={'mb-2'}>
+              <CartDrawerItem
+                id={1}
+                imageUrl={'/images/pizzas/1.png'}
+                name={'Сырная'}
+                price={530}
+                details={getCartItemDetails(1, 30, [
+                  {name: 'сыр'},
+                  {name: 'лук'},
+                  {name: 'перец'},
+                ])}
+                quantity={1}
+              />
+            </div>
+            <div className={'mb-2'}>
+              <CartDrawerItem
+                id={1}
+                imageUrl={'/images/pizzas/1.png'}
+                name={'Сырная'}
+                price={530}
+                details={getCartItemDetails(1, 30, [
+                  {name: 'сыр'},
+                  {name: 'лук'},
+                  {name: 'перец'},
+                ])}
+                quantity={1}
+              />
+            </div>
+            <div className={'mb-2'}>
+              <CartDrawerItem
+                id={1}
+                imageUrl={'/images/pizzas/1.png'}
+                name={'Сырная'}
+                price={530}
+                details={getCartItemDetails(1, 30, [
+                  {name: 'сыр'},
+                  {name: 'лук'},
+                  {name: 'перец'},
+                ])}
+                quantity={1}
+              />
+            </div>
+            <div className={'mb-2'}>
+              <CartDrawerItem
+                id={1}
+                imageUrl={'/images/pizzas/1.png'}
+                name={'Сырная'}
+                price={530}
+                details={getCartItemDetails(1, 30, [
+                  {name: 'сыр'},
+                  {name: 'лук'},
+                  {name: 'перец'},
+                ])}
+                quantity={1}
+              />
+            </div>
+            <div className={'mb-2'}>
+              <CartDrawerItem
+                id={1}
+                imageUrl={'/images/pizzas/1.png'}
+                name={'Сырная'}
+                price={530}
+                details={getCartItemDetails(1, 30, [
+                  {name: 'сыр'},
+                  {name: 'лук'},
+                  {name: 'перец'},
+                ])}
+                quantity={1}
+              />
+            </div>
+            <div className={'mb-2'}>
+              <CartDrawerItem
+                id={1}
+                imageUrl={'/images/pizzas/1.png'}
+                name={'Сырная'}
+                price={530}
+                details={getCartItemDetails(1, 30, [
+                  {name: 'сыр'},
+                  {name: 'лук'},
+                  {name: 'перец'},
+                ])}
+                quantity={1}
+              />
+            </div>
+            <div className={'mb-2'}>
+              <CartDrawerItem
+                id={1}
+                imageUrl={'/images/pizzas/1.png'}
+                name={'Сырная'}
+                price={530}
+                details={getCartItemDetails(1, 30, [
+                  {name: 'сыр'},
+                  {name: 'лук'},
+                  {name: 'перец'},
+                ])}
+                quantity={1}
+              />
+            </div>
+            <div className={'mb-2'}>
+              <CartDrawerItem
+                id={1}
+                imageUrl={'/images/pizzas/1.png'}
+                name={'Сырная'}
+                price={530}
+                details={getCartItemDetails(1, 30, [
+                  {name: 'сыр'},
+                  {name: 'лук'},
+                  {name: 'перец'},
+                ])}
+                quantity={1}
+              />
+            </div>
+            <div className={'mb-2'}>
+              <CartDrawerItem
+                id={1}
+                imageUrl={'/images/pizzas/1.png'}
+                name={'Сырная'}
+                price={530}
+                details={getCartItemDetails(1, 30, [
+                  {name: 'сыр'},
+                  {name: 'лук'},
+                  {name: 'перец'},
+                ])}
+                quantity={1}
+              />
+            </div>
+            <div className={'mb-2'}>
+              <CartDrawerItem
+                id={1}
+                imageUrl={'/images/pizzas/1.png'}
+                name={'Сырная'}
+                price={530}
+                details={getCartItemDetails(1, 30, [
+                  {name: 'сыр'},
+                  {name: 'лук'},
+                  {name: 'перец'},
+                ])}
+                quantity={1}
+              />
+            </div>
+            <div className={'mb-2'}>
+              <CartDrawerItem
+                id={1}
+                imageUrl={'/images/pizzas/1.png'}
+                name={'Сырная'}
+                price={530}
+                details={getCartItemDetails(1, 30, [
+                  {name: 'сыр'},
+                  {name: 'лук'},
+                  {name: 'перец'},
+                ])}
+                quantity={1}
+              />
+            </div>
+            <div className={'mb-2'}>
+              <CartDrawerItem
+                id={1}
+                imageUrl={'/images/pizzas/1.png'}
+                name={'Сырная'}
+                price={530}
+                details={getCartItemDetails(1, 30, [
+                  {name: 'сыр'},
+                  {name: 'лук'},
+                  {name: 'перец'},
+                ])}
+                quantity={1}
+              />
+            </div>
+            <div className={'mb-2'}>
+              <CartDrawerItem
+                id={1}
+                imageUrl={'/images/pizzas/1.png'}
+                name={'Сырная'}
+                price={530}
+                details={getCartItemDetails(1, 30, [
+                  {name: 'сыр'},
+                  {name: 'лук'},
+                  {name: 'перец'},
+                ])}
+                quantity={1}
+              />
+            </div>
+          </div>
 
           <SheetFooter className={'bg-white p-8'}>
             <div className={'w-full'}>

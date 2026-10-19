@@ -1,20 +1,19 @@
-import React from 'react';
-import {Minus, Plus} from 'lucide-react';
 import {cn} from 'cn';
-import {Button} from '@/shared/components/ui';
+import {CountIconButton} from '@/shared/components/shared/count-icon-button';
 
-interface Props {
+export type CountButtonProps = {
   value?: number;
   size?: 'sm' | 'lg';
   className?: string;
-  onClick?: () => void;
-}
+  onClick?: (type: 'plus' | 'minus') => void;
+};
 
-export const CountButton: React.FC<Props> = ({
+export const CountButton = ({
   className,
   value = 1,
   size = 'sm',
-}) => {
+  onClick,
+}: CountButtonProps) => {
   return (
     <div
       className={cn(
@@ -22,29 +21,18 @@ export const CountButton: React.FC<Props> = ({
         className
       )}
     >
-      <Button
-        variant="outline"
-        className={cn(
-          'hover:bg-primary p-0 hover:text-white',
-          size === 'sm'
-            ? 'h-[30px] w-[30px] rounded-sm'
-            : 'h-[38px] w-[38px] rounded-se-md'
-        )}
-      >
-        <Minus className={size === 'sm' ? 'h-4' : 'h-5'} />
-      </Button>
-      <b className={size === 'sm' ? 'text-sm' : 'text-md'}>{value}</b>
-      <Button
-        variant="outline"
-        className={cn(
-          'hover:bg-primary p-0 hover:text-white',
-          size === 'sm'
-            ? 'h-[30px] w-[30px] rounded-sm'
-            : 'h-[38px] w-[38px] rounded-md'
-        )}
-      >
-        <Plus className={size === 'sm' ? 'h-4' : 'h-5'} />
-      </Button>
+      <CountIconButton
+        onClick={() => onClick?.('minus')}
+        disabled={value === 1}
+        size={size}
+        type="minus"
+      />
+      <b className={size === 'sm' ? 'text-sm' : 'text-base'}>{value}</b>
+      <CountIconButton
+        onClick={() => onClick?.('plus')}
+        size={size}
+        type="plus"
+      />
     </div>
   );
 };
