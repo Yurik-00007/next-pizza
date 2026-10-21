@@ -83,7 +83,7 @@ export const SearchInput = ({className}: Props) => {
                 onClick={onClickItem}
               >
                 <img
-                  className={'rounded-xs'}
+                  className={'rounded-xs h-8 w-8 object-cover'}
                   src={el.imageUrl}
                   alt={el.name}
                   width={32}

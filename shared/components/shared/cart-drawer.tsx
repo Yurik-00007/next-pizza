@@ -1,8 +1,8 @@
-import {ReactNode} from 'react';
+'use client';
+import {ReactNode, useEffect} from 'react';
 import {
   Button,
   Sheet,
-  SheetClose,
   SheetContent,
   SheetFooter,
   SheetHeader,
@@ -13,12 +13,23 @@ import Link from 'next/link';
 import {ArrowRight} from 'lucide-react';
 import {CartDrawerItem} from '@/shared/components/shared/cart-drawer-item';
 import {getCartItemDetails} from '@/shared/lib';
+import {useCartStore} from '@/shared/store';
+import {PizzaSizeType, PizzaType} from '@/shared/constants/pizza';
 
 type Props = {
   className?: string;
   children?: ReactNode;
 };
 export const CartDrawer = ({className, children}: Props) => {
+  console.log(useCartStore.getState());
+
+  const totalAmount = useCartStore((state) => state.totalAmount);
+  const fetchCartItems = useCartStore((state) => state.fetchCartItems);
+  const items = useCartStore((state) => state.items);
+
+  useEffect(() => {
+    fetchCartItems();
+  }, [fetchCartItems]);
   return (
     <div className={className}>
       <Sheet>
@@ -28,264 +39,36 @@ export const CartDrawer = ({className, children}: Props) => {
         >
           <SheetHeader>
             <SheetTitle>
-              В корзине <span className={'font-bold'}>3 товара</span>
+              В корзине{' '}
+              <span className={'font-bold'}>`${items.length} товара`</span>
             </SheetTitle>
           </SheetHeader>
 
           {/*  Items*/}
           <div className={'mt-5 flex-1 overflow-auto'}>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'/images/pizzas/1.png'}
-                name={'Сырная'}
-                price={530}
-                details={getCartItemDetails(1, 30, [
-                  {name: 'сыр'},
-                  {name: 'лук'},
-                  {name: 'перец'},
-                ])}
-                quantity={1}
-              />
-            </div>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'/images/pizzas/1.png'}
-                name={'Сырная'}
-                price={530}
-                details={getCartItemDetails(1, 30, [
-                  {name: 'сыр'},
-                  {name: 'лук'},
-                  {name: 'перец'},
-                ])}
-                quantity={1}
-              />
-            </div>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'/images/pizzas/1.png'}
-                name={'Сырная'}
-                price={530}
-                details={getCartItemDetails(1, 30, [
-                  {name: 'сыр'},
-                  {name: 'лук'},
-                  {name: 'перец'},
-                ])}
-                quantity={1}
-              />
-            </div>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'/images/pizzas/1.png'}
-                name={'Сырная'}
-                price={530}
-                details={getCartItemDetails(1, 30, [
-                  {name: 'сыр'},
-                  {name: 'лук'},
-                  {name: 'перец'},
-                ])}
-                quantity={1}
-              />
-            </div>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'/images/pizzas/1.png'}
-                name={'Сырная'}
-                price={530}
-                details={getCartItemDetails(1, 30, [
-                  {name: 'сыр'},
-                  {name: 'лук'},
-                  {name: 'перец'},
-                ])}
-                quantity={1}
-              />
-            </div>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'/images/pizzas/1.png'}
-                name={'Сырная'}
-                price={530}
-                details={getCartItemDetails(1, 30, [
-                  {name: 'сыр'},
-                  {name: 'лук'},
-                  {name: 'перец'},
-                ])}
-                quantity={1}
-              />
-            </div>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'/images/pizzas/1.png'}
-                name={'Сырная'}
-                price={530}
-                details={getCartItemDetails(1, 30, [
-                  {name: 'сыр'},
-                  {name: 'лук'},
-                  {name: 'перец'},
-                ])}
-                quantity={1}
-              />
-            </div>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'/images/pizzas/1.png'}
-                name={'Сырная'}
-                price={530}
-                details={getCartItemDetails(1, 30, [
-                  {name: 'сыр'},
-                  {name: 'лук'},
-                  {name: 'перец'},
-                ])}
-                quantity={1}
-              />
-            </div>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'/images/pizzas/1.png'}
-                name={'Сырная'}
-                price={530}
-                details={getCartItemDetails(1, 30, [
-                  {name: 'сыр'},
-                  {name: 'лук'},
-                  {name: 'перец'},
-                ])}
-                quantity={1}
-              />
-            </div>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'/images/pizzas/1.png'}
-                name={'Сырная'}
-                price={530}
-                details={getCartItemDetails(1, 30, [
-                  {name: 'сыр'},
-                  {name: 'лук'},
-                  {name: 'перец'},
-                ])}
-                quantity={1}
-              />
-            </div>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'/images/pizzas/1.png'}
-                name={'Сырная'}
-                price={530}
-                details={getCartItemDetails(1, 30, [
-                  {name: 'сыр'},
-                  {name: 'лук'},
-                  {name: 'перец'},
-                ])}
-                quantity={1}
-              />
-            </div>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'/images/pizzas/1.png'}
-                name={'Сырная'}
-                price={530}
-                details={getCartItemDetails(1, 30, [
-                  {name: 'сыр'},
-                  {name: 'лук'},
-                  {name: 'перец'},
-                ])}
-                quantity={1}
-              />
-            </div>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'/images/pizzas/1.png'}
-                name={'Сырная'}
-                price={530}
-                details={getCartItemDetails(1, 30, [
-                  {name: 'сыр'},
-                  {name: 'лук'},
-                  {name: 'перец'},
-                ])}
-                quantity={1}
-              />
-            </div>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'/images/pizzas/1.png'}
-                name={'Сырная'}
-                price={530}
-                details={getCartItemDetails(1, 30, [
-                  {name: 'сыр'},
-                  {name: 'лук'},
-                  {name: 'перец'},
-                ])}
-                quantity={1}
-              />
-            </div>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'/images/pizzas/1.png'}
-                name={'Сырная'}
-                price={530}
-                details={getCartItemDetails(1, 30, [
-                  {name: 'сыр'},
-                  {name: 'лук'},
-                  {name: 'перец'},
-                ])}
-                quantity={1}
-              />
-            </div>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'/images/pizzas/1.png'}
-                name={'Сырная'}
-                price={530}
-                details={getCartItemDetails(1, 30, [
-                  {name: 'сыр'},
-                  {name: 'лук'},
-                  {name: 'перец'},
-                ])}
-                quantity={1}
-              />
-            </div>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'/images/pizzas/1.png'}
-                name={'Сырная'}
-                price={530}
-                details={getCartItemDetails(1, 30, [
-                  {name: 'сыр'},
-                  {name: 'лук'},
-                  {name: 'перец'},
-                ])}
-                quantity={1}
-              />
-            </div>
-            <div className={'mb-2'}>
-              <CartDrawerItem
-                id={1}
-                imageUrl={'/images/pizzas/1.png'}
-                name={'Сырная'}
-                price={530}
-                details={getCartItemDetails(1, 30, [
-                  {name: 'сыр'},
-                  {name: 'лук'},
-                  {name: 'перец'},
-                ])}
-                quantity={1}
-              />
-            </div>
+            {items.map((item) => (
+              <div
+                className={'mb-2'}
+                key={item.id}
+              >
+                <CartDrawerItem
+                  id={item.id}
+                  imageUrl={item.imageUrl}
+                  name={item.name}
+                  price={item.price}
+                  details={
+                    item.pizzaSize && item.pizzaType
+                      ? getCartItemDetails(
+                          item.ingredients,
+                          item.pizzaType as PizzaType,
+                          item.pizzaSize as PizzaSizeType
+                        )
+                      : ''
+                  }
+                  quantity={item.quantity}
+                />
+              </div>
+            ))}
           </div>
 
           <SheetFooter className={'bg-white p-8'}>
@@ -296,7 +79,7 @@ export const CartDrawer = ({className, children}: Props) => {
                   <div className="relativ -top-1 mx-2 flex-1 justify-end border-b border-dashed border-b-neutral-200" />
                 </span>
 
-                <span className="text-lg font-bold">500 ₽</span>
+                <span className="text-lg font-bold">{totalAmount} ₽</span>
               </div>
               <Link href={'/'}>
                 <Button

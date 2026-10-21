@@ -33,6 +33,7 @@ export const IngredientItem = ({
       <img
         width={110}
         height={110}
+        className={'h-[110px] w-[110px] object-contain'}
         src={imageUrl}
         alt={name}
       />

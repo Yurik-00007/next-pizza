@@ -25,7 +25,7 @@ export const ChooseProductForm = ({
           src={imageUrl}
           alt={name}
           className={
-            'relative top-2 left-2 z-10 h-[350px] w-[350px] transition-all duration-300'
+            'relative top-2 left-2 z-10 h-auto max-h-[350px] w-full max-w-[350px] object-contain transition-all duration-300'
           }
         />
       </div>

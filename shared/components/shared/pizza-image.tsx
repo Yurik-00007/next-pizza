@@ -13,28 +13,31 @@ export const PizzaImage = ({className, imgUrl, size}: Props) => {
         className
       )}
     >
-      <img
-        src={imgUrl}
-        alt="logo"
-        className={cn(
-          'relative top-2 left-2 z-10 transition-all duration-300',
-          {
-            'h-[300px] w-[300px]': size === 20,
-            'h-[400px] w-[400px]': size === 30,
-            'h-[500px] w-[500px]': size === 40,
+      <div
+        className={cn('relative aspect-square w-full', {
+          'max-w-[450px]': size === 20,
+          'max-w-[600px]': size === 30,
+          'max-w-[750px]': size === 40,
+        })}
+      >
+        <img
+          src={imgUrl}
+          alt="logo"
+          className={cn(
+            'absolute inset-0 z-10 m-auto h-2/3 w-2/3 object-contain transition-all duration-300'
+          )}
+        />
+        <div
+          className={
+            'absolute inset-0 rounded-full border-2 border-dashed border-gray-200'
           }
-        )}
-      />
-      <div
-        className={
-          'absolute top-1/2 left-1/2 h-[450px] w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-dashed border-gray-200'
-        }
-      />
-      <div
-        className={
-          'absolute top-1/2 left-1/2 h-[370px] w-[370px] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-dotted border-gray-100'
-        }
-      />
+        />
+        <div
+          className={
+            'absolute inset-[9%] rounded-full border-2 border-dotted border-gray-100'
+          }
+        />
+      </div>
     </div>
   );
 };

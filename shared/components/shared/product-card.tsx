@@ -18,11 +18,11 @@ export const ProductCard = ({id, name, price, imageUrl, className}: Props) => {
       <Link href={`/product/${id}`}>
         <div
           className={
-            'bg-secondary flex h-[260px] justify-center rounded-lg p-6'
+            'bg-secondary flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-lg p-6'
           }
         >
           <img
-            className={'h-[215px] w-[215px]'}
+            className={'h-full w-full object-contain'}
             src={imageUrl}
             alt={name}
           />
