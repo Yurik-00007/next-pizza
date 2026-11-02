@@ -32,7 +32,10 @@ export const useCartStore = create<CartState>()((set, get) => ({
   fetchCartItems: async () => {
     try {
       set({loading: true, error: false});
-      const data = await Api.cart.fetchCart();
+      //Запрашивает корзину у сервера
+      const data = await Api.cart.getCart();
+      //Преобразует данные в удобный формат getCartDetails(data)
+      //Сохраняет результат в Zustand Store
       set(getCartDetails(data));
     } catch (error) {
       console.error(error);
@@ -41,7 +44,30 @@ export const useCartStore = create<CartState>()((set, get) => ({
       set({loading: false});
     }
   },
-  removeCartItem: async (id: number) => {},
-  updateItemQuantity: async (id: number, quantity: number) => {},
+  updateItemQuantity: async (id: number, quantity: number) => {
+    try {
+      set({loading: true, error: false});
+      const data = await Api.cart.updateCartItemQuantity(id, quantity);
+      set(getCartDetails(data));
+    } catch (error) {
+      console.error(error);
+      set({error: true});
+    } finally {
+      set({loading: false});
+    }
+  },
+
+  removeCartItem: async (id: number) => {
+    try {
+      set({loading: true, error: false});
+      const data = await Api.cart.deleteCartItem(id);
+      set(getCartDetails(data));
+    } catch (error) {
+      console.error(error);
+      set({error: true});
+    } finally {
+      set({loading: false});
+    }
+  },
   addCartItem: async (value: any) => {},
 }));

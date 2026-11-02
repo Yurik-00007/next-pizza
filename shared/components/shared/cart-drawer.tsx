@@ -21,15 +21,28 @@ type Props = {
   children?: ReactNode;
 };
 export const CartDrawer = ({className, children}: Props) => {
-  console.log(useCartStore.getState());
+  // console.log(useCartStore.getState());
 
   const totalAmount = useCartStore((state) => state.totalAmount);
   const fetchCartItems = useCartStore((state) => state.fetchCartItems);
   const items = useCartStore((state) => state.items);
+  const updateItemQuantity = useCartStore((state) => state.updateItemQuantity);
+  const removeCartItem = useCartStore((state) => state.removeCartItem);
 
   useEffect(() => {
-    fetchCartItems();
+    void fetchCartItems();
   }, [fetchCartItems]);
+
+  const onClickCountButton = async (
+    id: number,
+    quantity: number,
+    type: 'plus' | 'minus'
+  ) => {
+    // console.log(id, quantity, type);
+    const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;
+    await updateItemQuantity(id, newQuantity);
+  };
+
   return (
     <div className={className}>
       <Sheet>
@@ -40,7 +53,7 @@ export const CartDrawer = ({className, children}: Props) => {
           <SheetHeader>
             <SheetTitle>
               В корзине{' '}
-              <span className={'font-bold'}>`${items.length} товара`</span>
+              <span className={'font-bold'}>{items.length} товара</span>
             </SheetTitle>
           </SheetHeader>
 
@@ -66,6 +79,10 @@ export const CartDrawer = ({className, children}: Props) => {
                       : ''
                   }
                   quantity={item.quantity}
+                  onClickCountButton={(type) =>
+                    onClickCountButton(item.id, item.quantity, type)
+                  }
+                  onClickRemove={() => removeCartItem(item.id)}
                 />
               </div>
             ))}
