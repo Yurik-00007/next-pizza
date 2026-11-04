@@ -72,7 +72,7 @@ model ProductItem {
   updatedAt DateTime @updatedAt
 }
 
-model IngredientItem {
+model Ingredient {
   id Int @id @default(autoincrement())
 
   name     String
@@ -111,7 +111,7 @@ model CartItem {
   productItem   ProductItem @relation(fields: [productItemId], references: [id])
   productItemId Int
 
-  quantity Int
+  quantity Int @default(1)
 
   ingredients Ingredient[]
 

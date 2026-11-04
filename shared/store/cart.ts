@@ -2,6 +2,7 @@ import {create} from 'zustand';
 import {getCartDetails} from '@/shared/lib';
 import {Api} from '@/shared/services/api-client';
 import {CartStateItem} from '@/shared/lib/get-cart-details';
+import {CreateCartItemValues} from '@/shared/services/dto/cart.dto';
 
 export type CartState = {
   loading: boolean;
@@ -69,5 +70,16 @@ export const useCartStore = create<CartState>()((set, get) => ({
       set({loading: false});
     }
   },
-  addCartItem: async (value: any) => {},
+  addCartItem: async (values: CreateCartItemValues) => {
+    try {
+      set({loading: true, error: false});
+      const data = await Api.cart.createCartItem(values);
+      set(getCartDetails(data));
+    } catch (error) {
+      console.error(error);
+      set({error: true});
+    } finally {
+      set({loading: false});
+    }
+  },
 }));

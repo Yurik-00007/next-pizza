@@ -46,7 +46,7 @@ export async function PATCH(
   } catch (error) {
     console.log('[CART_PATCH] Server error', error);
     return NextResponse.json(
-      {message: 'Не удалось обновить карзину'},
+      {message: 'Не удалось обновить корзину'},
       {status: 500}
     );
   }
@@ -90,9 +90,9 @@ export async function DELETE(
     // Возвращаем обновлённую корзину
     return NextResponse.json(updatedUserCart);
   } catch (error) {
-    console.log('[CART_PATCH] Server error', error);
+    console.log('[CART_DELETE] Server error', error);
     return NextResponse.json(
-      {message: 'Не удалось обновить карзину'},
+      {message: 'Не удалось обновить корзину'},
       {status: 500}
     );
   }
