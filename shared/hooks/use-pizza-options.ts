@@ -8,11 +8,12 @@ import {ProductItem} from '@prisma/client';
 type ReturnProps = {
   size: PizzaSizeType;
   type: PizzaType;
+  selectedIngredients: Set<number>;
+  availablePizzaSizes: Variant[];
+  currentItemId?: number;
   setSize: (size: PizzaSizeType) => void;
   setType: (type: PizzaType) => void;
-  selectedIngredients: Set<number>;
   addIngredient: (id: number) => void;
-  availablePizzaSizes: Variant[];
 };
 
 export const usePizzaOptions = (items: ProductItem[]): ReturnProps => {
@@ -24,6 +25,10 @@ export const usePizzaOptions = (items: ProductItem[]): ReturnProps => {
   );
 
   const availableSizes = getAvailablePizzaSizes(type, items);
+
+  const currentItemId = items.find(
+    (item) => item.pizzaType === type && item.size === size
+  )?.id;
 
   useEffect(() => {
     //Ищет в списке размеров availableSizes тот, который совпадает с текущим size и при этом не отключён (disabled: false). Если нашёл, в isAvailableSize лежит объект, иначе undefined.
@@ -47,5 +52,6 @@ export const usePizzaOptions = (items: ProductItem[]): ReturnProps => {
     selectedIngredients,
     addIngredient,
     availablePizzaSizes: availableSizes,
+    currentItemId,
   };
 };

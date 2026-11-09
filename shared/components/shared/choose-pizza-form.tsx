@@ -15,16 +15,21 @@ type Props = {
   name: string;
   ingredients: Ingredient[];
   items: ProductItem[];
-  onClickAddCart?: VoidFunction;
+  onSubmit: (itemId: number, ingredients: number[]) => void;
   className?: string;
 };
+
+/**
+ *
+ * Форма выбора пиццы
+ */
 export const ChoosePizzaForm = ({
   className,
   name,
-  onClickAddCart,
   items,
   ingredients,
   imageUrl,
+  onSubmit,
 }: Props) => {
   const {
     size,
@@ -34,6 +39,7 @@ export const ChoosePizzaForm = ({
     selectedIngredients,
     addIngredient,
     availablePizzaSizes,
+    currentItemId,
   } = usePizzaOptions(items);
 
   const {textDetails, totalPrice} = getPizzaDetails(
@@ -45,12 +51,9 @@ export const ChoosePizzaForm = ({
   );
 
   const handleClickAdd = () => {
-    onClickAddCart?.();
-    console.log({
-      size,
-      type,
-      interface: selectedIngredients,
-    });
+    if (currentItemId) {
+      onSubmit(currentItemId, Array.from(selectedIngredients));
+    }
   };
 
   return (

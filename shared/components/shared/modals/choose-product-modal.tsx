@@ -7,6 +7,7 @@ import {ProductWithRelations} from '@/@types/prisma';
 import {ChoosePizzaForm} from '@/shared/components/shared/choose-pizza-form';
 import {Dialog} from '@/shared/components/ui';
 import {DialogContent} from '@/shared/components/ui/dialog';
+import {useCartStore} from '@/shared/store';
 
 type Props = {
   product: ProductWithRelations;
@@ -14,8 +15,22 @@ type Props = {
 };
 export const ChooseProductModal = ({className, product}: Props) => {
   const router = useRouter();
+  const firstItem = product.items[0];
+  const isPizzaForm = Boolean(firstItem.pizzaType);
+  const addCartItem = useCartStore((state) => state.addCartItem);
 
-  const isPizzaForm = Boolean(product.items[0].pizzaType);
+  const onAddProduct = () => {
+    addCartItem({
+      productItemId: firstItem.id,
+    });
+  };
+  const onAddPizza = (productItemId: number, ingredients: number[]) => {
+    addCartItem({
+      productItemId,
+      ingredients,
+    });
+  };
+
   return (
     <Dialog
       open={!!product}
@@ -33,11 +48,14 @@ export const ChooseProductModal = ({className, product}: Props) => {
             name={product.name}
             ingredients={product.ingredients}
             items={product.items}
+            onSubmit={onAddPizza}
           />
         ) : (
           <ChooseProductForm
             imageUrl={product.imageUrl}
             name={product.name}
+            onSubmit={onAddProduct}
+            price={firstItem.price}
           />
         )}
       </DialogContent>

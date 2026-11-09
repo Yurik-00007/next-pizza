@@ -18,7 +18,7 @@ export type CartState = {
 
   // Запрос на добовления товаров в корзину
   //TODO типизировать values
-  addCartItem: (value: any) => Promise<void>;
+  addCartItem: (values: CreateCartItemValues) => Promise<void>;
 
   // Запрос на удаление товаров в корзину
   removeCartItem: (id: number) => Promise<void>;
@@ -73,7 +73,7 @@ export const useCartStore = create<CartState>()((set, get) => ({
   addCartItem: async (values: CreateCartItemValues) => {
     try {
       set({loading: true, error: false});
-      const data = await Api.cart.createCartItem(values);
+      const data = await Api.cart.addCartItem(values);
       set(getCartDetails(data));
     } catch (error) {
       console.error(error);
